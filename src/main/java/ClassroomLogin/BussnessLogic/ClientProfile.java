@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-class ClientProfile {
+public class ClientProfile {
     private int id;
     private String login;
     private String password;
@@ -16,4 +16,11 @@ class ClientProfile {
     private String status;
     private String position;
     private List<Course> courses;
+    ClientProfile (int error, String description){
+        id = error;
+        login=description;
+    }
+    void addCourse(Course course){
+        courses.add(course);
+    }
 }
