@@ -1,4 +1,4 @@
-package ClassroomLogin.BussnessLogic;
+package ClassroomLogin.BusinessLogic;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,10 +18,10 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Data
-@Entity
-@Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "users")
 public class ClientProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

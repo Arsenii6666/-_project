@@ -11,7 +11,7 @@ import java.util.Map;
 public class GatewayController {
     @Value("${classroom-login.url}")
     private String classroomLoginUrl;
-    private final String classroomLoginBaseUrl = "http://localhost:8080"; // Адреса ClassroomLogin сервісу
+    private final String classroomLoginBaseUrl = "http://localhost:8080";
     private final RestTemplate restTemplate;
     public GatewayController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;

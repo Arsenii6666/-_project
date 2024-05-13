@@ -1,6 +1,8 @@
-package ClassroomLogin.BussnessLogic;
+package ClassroomLogin.BusinessLogic;
 
 import com.fasterxml.jackson.databind.JsonSerializer;
+
+import ClassroomLogin.BusinessLogic.ClientProfileRepository;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +11,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ClassroomLogin.BussnessLogic.ClientProfileRepository;
 
 import java.util.ArrayList;
 

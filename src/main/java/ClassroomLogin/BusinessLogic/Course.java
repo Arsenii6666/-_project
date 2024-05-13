@@ -1,4 +1,4 @@
-package ClassroomLogin.BussnessLogic;
+package ClassroomLogin.BusinessLogic;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+import TestChecker.Data.Test;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -43,7 +44,7 @@ public class Course {
     @JoinTable(name = "course_tests",
                joinColumns = @JoinColumn(name = "course_id"),
                inverseJoinColumns = @JoinColumn(name = "test_id"))
-    private List<ClientProfile> tests;
+    private List<Test> tests;
 
     public Course(String aCourseName) {
         courseName = aCourseName;
