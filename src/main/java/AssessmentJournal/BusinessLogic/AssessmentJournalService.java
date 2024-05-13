@@ -20,7 +20,7 @@ public class AssessmentJournalService {
         this.assessmentJournalRepository = assessmentJournalRepository;
     }
 
-    public String submitTestResults(Long courseId, Long clientId, Grade grade) {
+    public String submitTestResults(Grade grade) {
         assessmentJournalRepository.save(grade);
         return "Test results submitted successfully.";
     }
@@ -33,5 +33,4 @@ public class AssessmentJournalService {
         }
         return grade.get();
     }
-
 }

@@ -13,11 +13,7 @@ public class GatewayApplication {
     private static String classroomLoginUrl;
 
     public static void main(String[] args) {
-        serverPort = 8090;
-        classroomLoginUrl = "http://localhost:8080";
-
         SpringApplication app = new SpringApplication(GatewayApplication.class);
-        app.setDefaultProperties(Collections.singletonMap("server.port", serverPort));
         app.run(args);
     }
 

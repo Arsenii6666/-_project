@@ -1,5 +1,7 @@
 package TestChecker.Data;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "questions")
-public class Question {
+public class Question implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
