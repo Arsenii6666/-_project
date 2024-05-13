@@ -34,6 +34,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
+              <finalName>ClassroomLogin</finalName>
               <transformers>
                 <transformer>
                   <mainClass>ClassroomLogin.Presentation.ClassroomLoginApplication</mainClass>
@@ -48,6 +49,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
+              <finalName>Gateway</finalName>
               <transformers>
                 <transformer>
                   <mainClass>Gateway.Presentation.GatewayApplication</mainClass>
@@ -62,6 +64,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
+              <finalName>TestChecker</finalName>
               <transformers>
                 <transformer>
                   <mainClass>TestChecker.Presentation.TestCheckerApplication</mainClass>
@@ -76,6 +79,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
+              <finalName>AssessmentJournal</finalName>
               <transformers>
                 <transformer>
                   <mainClass>AssessmentJournal.Presentation.AssessmentJournalApplication</mainClass>
@@ -84,6 +88,9 @@
             </configuration>
           </execution>
         </executions>
+        <configuration>
+          <mainClass>Gateway.Presentation.GatewayApplication</mainClass>
+        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -178,12 +185,6 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-webflux</artifactId>
       <version>6.1.5</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>6.1.3</version>
       <scope>provided</scope>
     </dependency>
     <dependency>

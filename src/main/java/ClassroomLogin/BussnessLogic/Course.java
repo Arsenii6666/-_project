@@ -1,30 +1,51 @@
 package ClassroomLogin.BussnessLogic;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "courses")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Course {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
     private String courseName;
-    private List<String> students;
-    private List<String> teachers;
-    private List<String> tests;
 
-    public Course(String courseName, String teacher) {
-        this.courseName = courseName;
-        this.students = new ArrayList<>();
-        this.teachers = new ArrayList<>();
-        teachers.add(teacher);
-        this.tests = new ArrayList<>();
-    }
+    @ManyToMany
+    @JoinTable(name = "course_students",
+               joinColumns = @JoinColumn(name = "course_id"),
+               inverseJoinColumns = @JoinColumn(name = "clientprofile_id"))
+    private List<ClientProfile> members;
 
-    public void addTeacher(String teacherName) {
+    @ManyToMany
+    @JoinTable(name = "course_tests",
+               joinColumns = @JoinColumn(name = "course_id"),
+               inverseJoinColumns = @JoinColumn(name = "test_id"))
+    private List<ClientProfile> tests;
 
-    }
-
-    public void addStudent(String userName) {
-
+    public Course(String aCourseName) {
+        courseName = aCourseName;
     }
 }

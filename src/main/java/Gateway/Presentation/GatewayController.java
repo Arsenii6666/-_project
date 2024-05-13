@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 
-@RestController
+@RestController("/")
 public class GatewayController {
     @Value("${classroom-login.url}")
     private String classroomLoginUrl;
