@@ -1,45 +1,30 @@
 package AssessmentJournal.Data;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.JoinColumn;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ClassroomLogin.BusinessLogic.ClientProfile;
-import ClassroomLogin.BusinessLogic.Course;
-import TestChecker.Data.Test;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "grades")
+@Document(collection = "grades")
 public class Grade {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @ManyToOne
-    @JoinColumn(name = "client_profile_id", referencedColumnName = "id")
-    private ClientProfile clientProfile;
+    @Field("client_profile_id")
+    private String clientProfileId;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id", referencedColumnName = "id")
-    private Course course;
+    @Field("course_id")
+    private String courseId;
 
-    @Column(nullable = false)
+    @Field("grade")
     private float grade;
 
-    @ManyToOne
-    @JoinColumn(name = "test_id", referencedColumnName = "id")
-    private Test test;
+    @Field("test_id")
+    private String testId;
 }

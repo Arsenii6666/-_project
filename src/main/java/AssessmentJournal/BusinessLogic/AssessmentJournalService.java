@@ -1,16 +1,18 @@
 package AssessmentJournal.BusinessLogic;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
-import AssessmentJournal.BusinessLogic.AssessmentJournalRepository;
 import AssessmentJournal.Data.Grade;
 import TestChecker.Data.Test;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AssessmentJournalService {
+
     @Autowired
     private final AssessmentJournalRepository assessmentJournalRepository;
 
@@ -18,21 +20,18 @@ public class AssessmentJournalService {
         this.assessmentJournalRepository = assessmentJournalRepository;
     }
 
-    public String submitTestResults(Long courseId, Long clientId, Test test) {
-        // assessmentJournalRepository.save(test);
-        System.err.println("HEEEEEEEEEY IMPLEMENT TEST RESULTS CALCULATIONS YOU DUMBASS");
-        return "Test results submitted unsuccessfully.";
+    public String submitTestResults(Long courseId, Long clientId, Grade grade) {
+        assessmentJournalRepository.save(grade);
+        return "Test results submitted successfully.";
     }
 
-    public List<Grade> getTestGrades(Long testId) {
-        return assessmentJournalRepository.findGradesByTestId(testId);
+    public Grade getGrade(String gradeId) {
+        Optional<Grade> grade = assessmentJournalRepository.findById(gradeId);
+        if (!grade.isPresent()) {
+            System.err.println("NO GRADE WITH ID " + gradeId);
+            return null;
+        }
+        return grade.get();
     }
 
-    public List<Grade> getStudentGrades(Long studentId) {
-        return assessmentJournalRepository.findGradesByClientProfileId(studentId);
-    }
-
-    public List<Grade> getStudentGradesInCourse(Long courseId, Long studentId) {
-        return assessmentJournalRepository.findGradesByClientProfileIdAndCourseId(studentId, courseId);
-    }
 }
