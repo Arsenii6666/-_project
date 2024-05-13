@@ -1,14 +1,14 @@
 package ClassroomLogin.Presentation;
 
-import ClassroomLogin.BussnessLogic.ClassroomLogin;
-import ClassroomLogin.BussnessLogic.ClientProfile;
-import ClassroomLogin.BussnessLogic.Course;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import ClassroomLogin.BusinessLogic.ClassroomLogin;
+import ClassroomLogin.BusinessLogic.ClientProfile;
+import ClassroomLogin.BusinessLogic.Course;
 
 import java.util.Map;
 import java.util.UUID;
@@ -71,5 +71,4 @@ public class ClassroomLoginController {
             return ResponseEntity.notFound().build();
         }
     }
-
 }

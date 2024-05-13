@@ -1,25 +1,37 @@
 package AssessmentJournal.BusinessLogic;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
-import AssessmentJournal.BusinessLogic.AssessmentJournalRepository;
-import TestChecker.BusinessLogic.Test;
+import AssessmentJournal.Data.Grade;
+import TestChecker.Data.Test;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AssessmentJournalService {
-    
-    private AssessmentJournalRepository assessmentJournalRepository;
 
-    public AssessmentJournalService() {}
+    @Autowired
+    private final AssessmentJournalRepository assessmentJournalRepository;
 
-    @Autowired(required = true)
-    public AssessmentJournalService(AssessmentJournalRepository aAssessmentJournalRepository) {
-        this.assessmentJournalRepository = aAssessmentJournalRepository;
+    public AssessmentJournalService(AssessmentJournalRepository assessmentJournalRepository) {
+        this.assessmentJournalRepository = assessmentJournalRepository;
     }
 
-    public String submitTestResults(Long testId, Test test) {
-        return "";
+    public String submitTestResults(Long courseId, Long clientId, Grade grade) {
+        assessmentJournalRepository.save(grade);
+        return "Test results submitted successfully.";
+    }
+
+    public Grade getGrade(String gradeId) {
+        Optional<Grade> grade = assessmentJournalRepository.findById(gradeId);
+        if (!grade.isPresent()) {
+            System.err.println("NO GRADE WITH ID " + gradeId);
+            return null;
+        }
+        return grade.get();
     }
 
 }

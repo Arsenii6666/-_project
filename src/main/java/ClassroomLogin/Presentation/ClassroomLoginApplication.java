@@ -11,9 +11,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import java.util.Collections;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"ClassroomLogin.BussnessLogic", "ClassroomLogin.Presentation"})
-@EnableJpaRepositories(basePackages="ClassroomLogin.BussnessLogic")
-@EntityScan("ClassroomLogin.BussnessLogic") 
+@ComponentScan(basePackages = {"ClassroomLogin.BusinessLogic", "ClassroomLogin.Presentation"})
+@EnableJpaRepositories(basePackages="ClassroomLogin.BusinessLogic")
+@EntityScan("ClassroomLogin.BusinessLogic") 
 public class ClassroomLoginApplication {
     private static Integer ServerPort;
     public static void main(String[] args) {

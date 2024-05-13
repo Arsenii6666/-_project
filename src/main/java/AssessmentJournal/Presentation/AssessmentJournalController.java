@@ -1,36 +1,34 @@
 package AssessmentJournal.Presentation;
 
-import org.springframework.web.bind.annotation.RestController;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 import AssessmentJournal.BusinessLogic.AssessmentJournalService;
-import TestChecker.BusinessLogic.Test;
+import AssessmentJournal.Data.Grade;
+import TestChecker.Data.Test;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/grades/")
+@ComponentScan(basePackages = {"AssessmentJournal.BusinessLogic", "AssessmentJournal.Presentation", "AssessmentJournal.Data"})
 public class AssessmentJournalController {
-    private AssessmentJournalService assessmentJournalService;
-
-    public AssessmentJournalController() {}
-
     @Autowired
-    public AssessmentJournalController(AssessmentJournalService aAssessmentJournalService) {
-        this.assessmentJournalService = aAssessmentJournalService;
+    private final AssessmentJournalService assessmentJournalService;
+
+    public AssessmentJournalController(AssessmentJournalService assessmentJournalService) {
+        this.assessmentJournalService = assessmentJournalService;
     }
 
-    @PostMapping("/tests/{test_id}/submit")
-    public String submitTestResults(@PathVariable("test_id") Long testId, @RequestBody Test test) {
-        return assessmentJournalService.submitTestResults(testId, test);
+    @PostMapping("/courses/{course_id}/students/{client_id}/submit-grade")
+    public String submitGrade(@PathVariable("course_id") Long courseId,
+                              @PathVariable("client_id") Long clientId,
+                              @RequestBody Grade grade) {
+        return assessmentJournalService.submitTestResults(courseId, clientId, grade);
     }
 
-    // @GetMapping("/tests/{test_id}/grades")
-    // public TestGradesDTO getTestGrades(@PathVariable("test_id") Long testId) {
-    //     return assessmentJournalService.getTestGrades(testId);
-    // }
-
-    // @GetMapping("/students/{student_id}/grades")
-    // public StudentGradesDTO getStudentGrades(@PathVariable("student_id") Long studentId) {
-    //     return assessmentJournalService.getStudentGrades(studentId);
-    // }
+    @GetMapping("/{grade_id}")
+    public Grade getGrade(@PathVariable("grade_id") String gradeId) {
+        return assessmentJournalService.getGrade(gradeId);
+    }
 }
