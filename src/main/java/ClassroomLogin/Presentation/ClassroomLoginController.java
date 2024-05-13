@@ -31,8 +31,7 @@ public class ClassroomLoginController {
         String institution = payload.get("institution");
         String status = payload.get("status");
         String position = payload.get("position");
-        ClientProfile clientProfile = new ClientProfile(0, login, password, fullName, institution, status, position,
-                null);
+        ClientProfile clientProfile = new ClientProfile(login, password, fullName, institution, status, position);
         classroomLogin.addClientProfile(clientProfile);
         return "New user created successfully.";
     }

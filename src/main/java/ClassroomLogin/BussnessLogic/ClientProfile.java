@@ -25,6 +25,7 @@ import jakarta.persistence.Table;
 public class ClientProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int id;
 
     @Column(nullable = false, unique = true)
@@ -43,9 +44,18 @@ public class ClientProfile {
     private String position;
     
     @Column
+    
     private String status;
 
     @OneToMany(mappedBy = "members", cascade = CascadeType.ALL)
     private List<Course> courses;
 
+    public ClientProfile(String login, String password, String fullName, String institution, String status, String position) {
+        this.login = login;
+        this.password = password;
+        this.fullName = fullName;
+        this.position = position;
+        this.institution = institution;
+        this.status = status;
+    }
 }
