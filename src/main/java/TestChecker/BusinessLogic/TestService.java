@@ -12,6 +12,7 @@ import com.hazelcast.collection.IQueue;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
+import org.springframework.stereotype.Service;
 
 import AssessmentJournal.Data.Grade;
 import TestChecker.Data.Question;

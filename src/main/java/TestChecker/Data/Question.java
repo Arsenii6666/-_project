@@ -1,7 +1,6 @@
 package TestChecker.Data;
 
 import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
