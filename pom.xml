@@ -88,6 +88,7 @@
 			<groupId>com.hazelcast</groupId>
 			<artifactId>hazelcast-spring</artifactId>
 			<version>4.2.2</version>
+		</dependency>
     </dependencies>
 
 	<build>
