@@ -17,11 +17,7 @@ public class GatewayApplication {
     public static HazelcastInstance hz;
 
     public static void main(String[] args) {
-        serverPort = 8090;
-        classroomLoginUrl = "http://localhost:8080";
         SpringApplication app = new SpringApplication(GatewayApplication.class);
-        app.setDefaultProperties(Collections.singletonMap("server.port", serverPort));
-        connectToTestQueue();
         app.run(args);
     }
 

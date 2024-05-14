@@ -13,13 +13,11 @@ import java.util.Collections;
 @SpringBootApplication
 @ComponentScan(basePackages = {"ClassroomLogin.BusinessLogic", "ClassroomLogin.Presentation"})
 @EnableJpaRepositories(basePackages="ClassroomLogin.BusinessLogic")
-@EntityScan("ClassroomLogin.BusinessLogic") 
+@EntityScan(basePackages = {"ClassroomLogin.BusinessLogic", "TestChecker.Data"})
 public class ClassroomLoginApplication {
     private static Integer ServerPort;
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(ClassroomLoginApplication.class);
-        ServerPort= 8090;
-        app.setDefaultProperties(Collections.singletonMap("server.port", ServerPort));
         app.run(args);
     }
     @EventListener(ContextRefreshedEvent.class)

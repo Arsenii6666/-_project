@@ -20,11 +20,9 @@ public class AssessmentJournalController {
         this.assessmentJournalService = assessmentJournalService;
     }
 
-    @PostMapping("/courses/{course_id}/students/{client_id}/submit-grade")
-    public String submitGrade(@PathVariable("course_id") Long courseId,
-                              @PathVariable("client_id") Long clientId,
-                              @RequestBody Grade grade) {
-        return assessmentJournalService.submitTestResults(courseId, clientId, grade);
+    @PostMapping("/submit-grade")
+    public String submitGrade(@RequestBody Grade grade) {
+        return assessmentJournalService.submitTestResults(grade);
     }
 
     @GetMapping("/{grade_id}")
